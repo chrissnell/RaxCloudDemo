@@ -15,6 +15,7 @@ from libcloud.loadbalancer.types import Provider as lb_Provider
 from libcloud.loadbalancer.providers import get_driver as lb_get_driver
 import libcloud.security
 
+# Check to see if CA_CERT_PATH is set in the user's enviornment
 if 'CA_CERT_PATH' in os.environ.keys():
     print "CA_CERT_PATH found."
     libcloud.security.CA_CERTS_PATH.append((os.environ)['CA_CERT_PATH'])
@@ -24,7 +25,7 @@ if 'CA_CERT_PATH' in os.environ.keys():
 #
 RACKSPACE_USER=os.environ['OS_USERNAME']
 RACKSPACE_KEY=os.environ['OS_PASSWORD']
-RACKSPACE_AUTH_URL='https://identity.api.rackspacecloud.com/v2.0/'
+RACKSPACE_AUTH_URL=os.environ['OS_AUTH_URL']
 TARGET_DC='dfw'
 REGION='us'
 AUTH_VERSION = '2.0'
